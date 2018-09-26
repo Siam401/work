@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/category','CategoryController@index');
+Route::get('/category','CategoryController@index')->name('categories.index');
 
-Route::get('/category/store','CategoryController@store');
+Route::get('/category/create','CategoryController@create')->name('categories.create');
+
+Route::post('/category/store','CategoryController@store')->name('categories.store');
 
 Route::get('/category/show/{id}','CategoryController@show');
 

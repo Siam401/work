@@ -12,29 +12,13 @@
 <body>
 
 <div class="container">
-  <center><h2>Category List</h2></center>
-  <p><a href="{{ route('categories.create') }}">Add Category</a></p>            
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Serial</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-
-    @php
-    $a=0
-    @endphp
-
-    <tbody>
-      @foreach($categories as $category)
-      <tr>
-        <td>{{ ++$a }}</td>
-        <td>{{ $category->title }}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
+  <a href="{{ route('categories.index') }}">Category List</a>
+  <form action="{{ route('categories.store') }}" method="post">
+    @csrf
+    <label>Add Category:</label>
+    <input type="text" class="form-control" style="width: 600px" name="title" required><br>
+    <input type="submit" class="btn btn-primary" name="submit" value="Add">
+  </form>          
 </div>
 
 </body>
