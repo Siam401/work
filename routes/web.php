@@ -20,6 +20,27 @@ Route::get('/category/create','CategoryController@create')->name('categories.cre
 
 Route::post('/category/store','CategoryController@store')->name('categories.store');
 
-Route::get('/category/show/{id}','CategoryController@show');
+Route::get('/category/{category}/edit','CategoryController@edit')->name('categories.edit');
 
-Route::put('/category/{$id}/edit','CategoryController@edit');
+Route::put('/category/{category}','CategoryController@update')->name('categories.update');
+
+Route::get('/category/show/{id}','CategoryController@show')->name('categories.show');
+
+Route::delete('/category/{id}','CategoryController@destroy')->name('categories.destroy');
+
+
+
+Route::get('/posts','PostController@index')->name('posts.index');
+
+Route::get('/posts/show/{post}','PostController@show')->name('posts.show');
+
+Route::get('/posts/create','PostController@create')->name('posts.create');
+
+Route::post('/posts/store','PostController@store')->name('posts.store');
+
+Route::get('/posts/{posts}/edit','PostController@edit')->name('posts.edit');
+
+Route::put('/posts/{posts}','PostController@update')->name('posts.update');
+
+Route::delete('/posts/{id}','PostController@destroy')->name('posts.destroy');
+

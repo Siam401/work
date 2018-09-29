@@ -12,13 +12,31 @@
 <body>
 
 <div class="container">
+  <center><h2>Add Category</h2></center>
   <a href="{{ route('categories.index') }}">Category List</a>
-  <form action="{{ route('categories.store') }}" method="post">
-    @csrf
+  <!-- <form action="{{ route('categories.store') }}" method="post"> -->
+  {!! Form::open(['route' => 'categories.store']) !!}
     <label>Add Category:</label>
-    <input type="text" class="form-control" style="width: 600px" name="title" required><br>
-    <input type="submit" class="btn btn-primary" name="submit" value="Add">
-  </form>          
+    <!-- <input type="text" class="form-control" style="width: 600px" name="title" required> -->
+    @if($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+  {!! form::text('title',null,[
+      'class'=>'form-control',
+      'style'=>'width:600px'
+    ]) !!}
+    <br>
+    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Add"> -->
+    {!! form::submit('submit',[
+      'class'=>'btn btn-primary'
+    ]) !!}
+  {!! Form::close() !!}     
 </div>
 
 </body>

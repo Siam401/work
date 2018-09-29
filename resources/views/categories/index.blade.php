@@ -13,12 +13,18 @@
 
 <div class="container">
   <center><h2>Category List</h2></center>
-  <p><a href="{{ route('categories.create') }}">Add Category</a></p>            
+  <p><a href="{{ route('categories.create') }}">Add Category</a></p>
+
+  @if(session()->has('message'))
+   {{ session('message') }}
+  @endif
+
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Serial</th>
         <th>Title</th>
+        <th>Action</th>
       </tr>
     </thead>
 
@@ -31,10 +37,27 @@
       <tr>
         <td>{{ ++$a }}</td>
         <td>{{ $category->title }}</td>
+        <td>
+          <a class="btn btn-primary" href="{{ route('categories.show',$category->id) }}">show</a>
+          <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">edit</a>
+          {!! Form::open([
+            'route'=>['categories.destroy',$category->id],
+            'method'=>'delete',
+            'style'=>'display:inline'
+          ]) !!}
+          {!! Form::button('delete',[
+            'type'=>'submit',
+            'class'=>'btn btn-primary',
+            'onclick'=>'return confirm("Are you sure to delete?")'
+          ]) !!}
+          {!! Form::close() !!}
+        </td>
       </tr>
       @endforeach
     </tbody>
   </table>
+
+  {{ $categories->links() }}
 </div>
 
 </body>

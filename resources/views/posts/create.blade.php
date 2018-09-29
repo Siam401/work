@@ -12,23 +12,29 @@
 <body>
 
 <div class="container">
-    <center><h2>Edit Category</h2></center>
-    <a href="{{ route('categories.index') }}">Category List</a>
-<!-- <form action="{{ route('categories.store') }}" method="post"> -->
-    {!! Form::open([
-        'route' => ['categories.update',$category->id],
-        'method'=>'put'
-        ]) !!}
-    <label>Edit Category:</label>
-    <!-- <input type="text" class="form-control" style="width: 600px" name="title" required> -->
-    {!! form::text('title',$category->title,[
-      'class'=>'form-control',
-      'style'=>'width:600px',
-      'required'
-    ]) !!}
+    <center><h2>Add Post</h2></center>
+    <a href="{{ route('posts.index') }}" class="btn btn-primary">Post List</a>
+    {!! Form::open(['route' => 'posts.store']) !!}
+    @if($errors->any())
+        <div class="alert alert-warning">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <label for="usr">Title:</label>
+    {!! form::text('title',null,[
+        'class'=>'form-control'
+      ]) !!}
     <br>
-    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Add"> -->
-    {!! form::submit('Update',[
+    <label for="usr">Description:</label>
+    {!! form::text('description',null,[
+        'class'=>'form-control'
+      ]) !!}
+    <br>
+    {!! form::submit('Create',[
       'class'=>'btn btn-primary'
     ]) !!}
     {!! Form::close() !!}

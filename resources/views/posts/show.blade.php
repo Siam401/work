@@ -8,15 +8,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<center><h1>Show Category</h1></center></br>
+<center><h1>Show Post</h1></center></br>
 <div class="container">
-    <h3>View Category details</h3>
+    <h3>View Post details</h3>
 
-        <label for="usr">Title:</label>
-        <p>{{ $category->title }}</p></br>
-        <label for="usr">Created At:</label>
-        <p>{{ $category->created_at }}</p></br>
-        <a href="{{ route('categories.index') }}" class="btn btn-primary"><<<</a>
+    <label for="usr">Title:</label>
+    <p>{{ $post->title }}</p></br>
+    <label for="usr">Description:</label>
+    <p>{{ $post->description }}</p></br>
+    <label for="usr">Created At:</label>
+    <p>{{ $post->created_at }}</p></br>
+    <a href="{{ route('posts.index') }}" class="btn btn-primary"><<<</a>
     </form>
 </div>
 </body>
